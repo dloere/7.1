@@ -1,0 +1,42 @@
+<%- include('_header.ejs') -%>
+<section class="col-xs-12">
+
+    <div class="panel panel-primary">
+      <div class="panel-heading">
+        <h2>Welcome <%= username %></h2>
+      </div>
+    </div>
+    
+    <table class="table table-dark">
+      <thead>
+        <tr>
+          <th scope="col">No.</th>
+          <th scope="col">TITLE</th>
+          <th scope="col">DESCRIPTION</th>
+          <th scope="col">AUTHOR</th>
+          <th scope="col">EMAIL</th>
+          <th scope="col">DATE</th>
+          <th scope="col">EDIT</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% for(i=0; i< data.length; i++) { %>
+        <tr>
+          <th scope="row"><%= i %></th>
+          <td><%= data[i].title %></td>
+          <td><%= data[i].descrpition %></td>
+          <td><%= data[i].email %></td>
+          <td><%= data[i].author %></td>
+          <td><%= data[i].createAt %></td>
+          <td><form action='/delete/<%=data[i]._id%>' method="POST" onsubmit="return confirm('정말삭제하시겠습니까?')"><button type="submit" class="btn btn-success" >삭제</button></td></form>
+        </tr>
+      <% } %>
+      </tbody>
+    </table>
+  
+    <a href="/insert"><button type="submit" class="btn btn-primary" >CREATE</button></a>
+  
+
+    
+  </section>
+  
